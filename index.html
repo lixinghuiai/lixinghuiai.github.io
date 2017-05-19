@@ -286,6 +286,187 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="lixinghui.top/2017/05/19/JavaScript使用技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李兴会">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xinghui(✪ω✪)blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/19/JavaScript使用技巧/" itemprop="url">JavaScript使用技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-19T15:57:58+08:00">
+                2017-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/19/JavaScript使用技巧/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/19/JavaScript使用技巧/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JavaScript使用技巧"><a href="#JavaScript使用技巧" class="headerlink" title="JavaScript使用技巧"></a>JavaScript使用技巧</h1><p>原文：<a href="http://www.cnblogs.com/jiuyi/p/4226896.html" target="_blank" rel="external">http://www.cnblogs.com/jiuyi/p/4226896.html</a></p>
+<p>1、如果 ajax 返回单一的 json 格式，接收方需要这样再格式化一下赋值：</p>
+<p>var str = eval(“(“ + msg + “)”);</p>
+<p>开发引用： /// <reference path="http://x.autoimg.cn/as/static/js/jquery-1.7.2.min.js"></reference></p>
+<p>2、如果 ajax 同发出两个以上的请求时，返回的状态会串，不能用异步，用同步可以解决问题；</p>
+<p>3、navigator.plugins[“Shockwave Flash”] 检查 当前机器 flash 版本</p>
+<p>4、删除前后空格 String.prototype.trim = function () { return this.replace(/(^[ |　]<em>)|([ |　]</em>$)/g, “”); }</p>
+<p>5、IE6 下 JS 在执行一个方法后，当前方法内的代码执行完后，此次的单线程就会停止，当前的方法里还有其它的方法也不会再执行；如果要执行的话，需要加 setTimeout(); 事件再执行；</p>
+<p>6、把 document.getElementById(id) 转换成 $(“id”)<br>function $(id) { return typeof (id) == ‘string’ ? document.getElementById(id) : id }</p>
+<p>7、图片加载失败，并防止死循环 onerror=”this.src=aaa.jpg;this.onerror=null;”</p>
+<p>8、document.getElementsByTagName(‘*’).length 查看页面有多少个 Dom 元素；</p>
+<p>9、parseInt() 只会返回整数部分；一个完整的parseInt应该是这样的：parseInt(string, radix)，其中radix指定数字的进制（十进制，二进制，十六进制etc.） parseInt(“f”,16): 15</p>
+<p>把加号放在包含合法数字的字符串前面会将字符串转化为数字；</p>
+<p>Null 用成数字时会表现为0，做布尔时表现为false.</p>
+<p>声明一个变量但没有赋值，此时这个变量的值为undefined. Undefined用作数字时类型表现为NaN, 用作布尔时表现为false.</p>
+<p>10、各种正则验证规则 数字验证规则：</p>
+<blockquote>
+<p> “^\d+$”　　//非负整数（正整数 + 0）<br>“^[0-9]<em>[1-9][0-9]</em>$”　　//正整数<br>“^((-\d+)|(0+))$”　　//非正整数（负整数 + 0）<br>“^-[0-9]<em>[1-9][0-9]</em>$”　　//负整数<br>“^-?\d+$”　　　　//整数<br>“^\d+(“　　//非负浮点数（正浮点数 + 0）<br>“^(([0-9]+\.[0-9]<em>[1-9][0-9]</em>)|([0-9]<em>[1-9][0-9]</em>\.[0-9]+)|([0-9]<em>[1-9][0-9]</em>))$”　　//正浮点数<br>“^((-\d+(“　　//非正浮点数（负浮点数 + 0）<br>“^(-(([0-9]+\.[0-9]<em>[1-9][0-9]</em>)|([0-9]<em>[1-9][0-9]</em>\.[0-9]+)|([0-9]<em>[1-9][0-9]</em>)))$”　　//负浮点数<br>“^(-?\d+)(“　　//浮点数<br>var r = /^+?[1-9][0-9]*$/;　　//正整数<br>r.test(str); </p>
+</blockquote>
+<p>11、按照 json 的属性值排序</p>
+<blockquote>
+<p>var cc=[<br>{ name: “a”, age: 30},<br>{ name: “c”, age: 24},<br>{ name: “b”, age: 28},<br>{ name: “e”, age: 18},<br>{ name: “d”, age: 38}<br>].sort(function(obj1, obj2) {<br>return obj1.age - obj2.age;<br>});<br>for(var i=0;i&lt;cc.length;i++){<br>alert(cc[i][‘age’]); //依次显示 18,24,28,30,38<br>}</p>
+</blockquote>
+<p>13、多点击事件获取点击的是哪个</p>
+<blockquote>
+<p>$(‘#IndexLink,#IndexLink1’).on(‘click’, function (e) {<br>var id=e.target.id;<br>//id 取到的就是被点击的ID值<br>}</p>
+</blockquote>
+<p>17、window.history.forward(1); 阻止页面后退；</p>
+<p>18、 JS call 与aplly 用法</p>
+<blockquote>
+<p>function Person(name, age) {<br>this.name = name;<br>this.age = age;<br>};</p>
+</blockquote>
+<p>function Student(name, age, grade) {<br>Person.apply(this, arguments);<br>this.grade = grade;<br>};<br>var student = new Student(‘qian’, 21, ‘一年级’);<br>alert(‘name:’ + student.name + ‘\n’ + ‘age:’ + student.age + ‘\n’ + ‘grade:’ + student.grade);</p>
+<p>//也就是通俗一点讲就是:用student去执行Person这个类里面的内容,在Person这个类里面存在this.name等之类的语句,<br>//这样就将属性创建到了student对象里面</p>
+<p>页面到底部自动加载内容：</p>
+<blockquote>
+<p>var divH = document.body.scrollHeight,top = document.body.scrollTop,windowH = window.screen.availHeight;<br>if ((top + windowH) &gt;divH) {<br>console.log(‘该他妈的加载内容了。’);<br>}<br>console.log(‘网页正文全文高：’ + document.body.scrollHeight + ‘ 网页被卷去的高： ‘ + document.body.scrollTop + ‘ 屏幕可用工作区高度:’ + window.screen.availHeight);</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="lixinghui.top/2017/05/19/CSS3 transform对普通元素的N多渲染影响/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1068,7 +1249,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1079,7 +1260,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
