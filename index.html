@@ -286,6 +286,172 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="lixinghui.top/2017/05/19/CSS3 transform对普通元素的N多渲染影响/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李兴会">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xinghui(✪ω✪)blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/19/CSS3 transform对普通元素的N多渲染影响/" itemprop="url">CSS3 transform对普通元素的N多渲染影响</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-19T09:42:03+08:00">
+                2017-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/19/CSS3 transform对普通元素的N多渲染影响/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/19/CSS3 transform对普通元素的N多渲染影响/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="CSS3-transform对普通元素的N多渲染影响"><a href="#CSS3-transform对普通元素的N多渲染影响" class="headerlink" title="CSS3 transform对普通元素的N多渲染影响"></a>CSS3 transform对普通元素的N多渲染影响</h1><blockquote>
+<p>本文地址：<a href="http://www.zhangxinxu.com/wordpress/?p=4799" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/?p=4799</a></p>
+<h4 id="transform提升元素的垂直地位"><a href="#transform提升元素的垂直地位" class="headerlink" title="transform提升元素的垂直地位"></a>transform提升元素的垂直地位</h4><p>我们可能都知道这样一个规则，当遭遇元素margin负值重叠的时候，如果没有static以外的position属性值的话，后面的元素是会覆盖前面的元素的。例如下面，后面的妹子覆盖了前面的妹子：</p>
+</blockquote>
+<figure class="highlight plain"><figcaption><span>src="mm1"><img src="mm2" style="margin-left:-60px;"> ```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">在transform出现之前，这个规则一直很稳健；但是，自从transform降临，这个规则就变了。元素应用了transform属性之后，就会变得应用了position:relative一个尿性，原本应该被覆盖的元素会雄起，变成覆盖其他元素，修改为如下代码：</div><div class="line"></div><div class="line">``` &lt;img src=&quot;mm1&quot; style=&quot;-ms-transform:scale(1);transform:scale(1);&quot;&gt;&lt;img src=&quot;mm2&quot; style=&quot;margin-left:-60px;&quot;&gt;</div></pre></td></tr></table></figure>
+<p><a href="http://www.zhangxinxu.com/study/201505/css3-transform-cover.html" target="_blank" rel="external">CSS3 transform覆盖后面的重叠元素Demo</a></p>
+<h4 id="transform限制position-fixed的跟随效果"><a href="#transform限制position-fixed的跟随效果" class="headerlink" title="transform限制position:fixed的跟随效果"></a>transform限制position:fixed的跟随效果</h4><p>我们应该都知道，position:fixed可以让元素不跟随浏览器的滚动条滚动，而且这种跟随效果连它的兄弟们position:relative/absolute都限制不了。但是，真是一物降一物，position:fixed固定效果却被小小的transform给干掉了，直接降级变成position:absolute的蛋疼表现。</p>
+<p><code>&lt;p style=&quot;transform:scale(1);&quot;&gt;&lt;img src=&quot;mm1.jpg&quot;style=&quot;position:fixed;&quot; /&gt;&lt;/p&gt;</code></p>
+<font color="red"> 注意，这个特性表现，目前只在Chrome浏览器/FireFox浏览器下有，IE浏览器，包括IE11, fixed还是fixed的表现。</font>
+
+<h4 id="transform改变overflow对absolute元素的限制"><a href="#transform改变overflow对absolute元素的限制" class="headerlink" title="transform改变overflow对absolute元素的限制"></a>transform改变overflow对absolute元素的限制</h4><p>在以前，overflow与absolute之间的限制规范内容大致是这样的：</p>
+<blockquote>
+<p>absolute绝对定位元素，如果含有overflow不为visible的父级元素，同时，该父级元素以及到该绝对定位元素之间任何嵌套元素都没有position为非static属性的声明，则overflow对该absolute元素不起作用。</p>
+</blockquote>
+ <p style="width:96px; height:96px; border:2px solid #beceeb; overflow:hidden;"><br>    <img src="mm1.jpg" style="position:absolute;"></p> 
+
+<p>结果是这样子，图片溢出的右侧还是可见的。</p>
+<p> <img src="http://image.zhangxinxu.com/image/study/s/s128/mm1.jpg" alt=""></p>
+<p>但是，一旦我们给overflow容器或者与图片有嵌套关系的子元素使用transform声明，呵呵呵，估计absolute元素就要去领便当了！</p>
+<p>比方说，下面这个嵌套一层block水平标签应用transform属性后的效果：<br><img src="http://image.zhangxinxu.com/image/study/s/s128/mm1.jpg" alt=""></p>
+<p>这里地方小，借一步说话，您可以狠狠地点击这里<a href="http://www.zhangxinxu.com/study/201505/css3-transform-overflow.html" target="_blank" rel="external">transform对overflow absolute元素限制Demo</a></p>
+<p>结果出现了有意思的浏览器兼容性差异：Chrome/Opera浏览器下，只有嵌套元素含有transform属性的时候，absolute元素才会被overflow隐藏；但是在IE9+/FireFox浏览器下，无论是overflow容器还是嵌套子元素，只要有transform属性，就会hidden溢出的absolute元素。</p>
+<p>截图如下：<br> <a href="http://image.zhangxinxu.com/image/blog/201505/2015-05-21_010034.png" target="_blank" rel="external"></a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="lixinghui.top/2017/05/16/GitHub-Hexo-搭建个人网站详细教程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -902,7 +1068,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -913,7 +1079,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
